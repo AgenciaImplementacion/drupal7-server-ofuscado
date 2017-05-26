@@ -1,0 +1,273 @@
+  <div class="content">
+    <form action="/admin/config/people/ldap/servers/edit/testfreeipa_ok2" method="post" id="ldap-servers-admin-form" accept-charset="UTF-8"><div><fieldset class="collapsible form-wrapper collapse-processed" id="edit-server"><legend><span class="fieldset-legend"><a class="fieldset-title" href="#"><span class="fieldset-legend-prefix element-invisible">Hide</span> Connection settings</a><span class="summary"></span></span></legend><div class="fieldset-wrapper" style=""><div class="form-item form-type-textfield form-item-sid form-disabled">
+  <label for="edit-sid">Machine name for this server configuration. <span class="form-required" title="This field is required.">*</span></label>
+ <input disabled="disabled" id="edit-sid" name="sid" value="testfreeipa_ok2" size="20" maxlength="20" class="form-text required" type="text">
+<div class="description">May only contain alphanumeric characters (a-z, A-Z, 0-9, and _)</div>
+</div>
+<div class="form-item form-type-textfield form-item-name">
+  <label for="edit-name">Name </label>
+ <input id="edit-name" name="name" value="Test FreeIPA Ok 2" size="50" maxlength="255" class="form-text" type="text">
+<div class="description">Choose a <em><strong>unique</strong></em> name for this server configuration.</div>
+</div>
+<div class="form-item form-type-checkbox form-item-status">
+ <input id="edit-status" name="status" value="1" checked="checked" class="form-checkbox" type="checkbox">  <label class="option" for="edit-status">Enabled </label>
+
+<div class="description">Disable in order to keep configuration without having it active.</div>
+</div>
+<div class="form-item form-type-select form-item-ldap-type">
+  <label for="edit-ldap-type">LDAP Server Type </label>
+ <select id="edit-ldap-type" name="ldap_type" class="form-select"><option value="default" selected="selected">Default LDAP</option><option value="ad">Active Directory</option><option value="novell_edir">Novell</option><option value="openldap">Open LDAP</option><option value="opendir">Apple Open Directory</option></select>
+<div class="description">This field is informative.  It's purpose is to assist with default values and give validation warnings.</div>
+</div>
+<div class="form-item form-type-textfield form-item-address">
+  <label for="edit-address">LDAP server </label>
+ <input id="edit-address" name="address" value="testfreeipa.portal.incige.com" size="50" maxlength="255" class="form-text" type="text">
+<div class="description">The domain name or IP address of your LDAP Server such as "ad.unm.edu". For SSL
+        use the form ldaps://DOMAIN such as "ldaps://ad.unm.edu"</div>
+</div>
+<div class="form-item form-type-textfield form-item-port">
+  <label for="edit-port">LDAP port </label>
+ <input id="edit-port" name="port" value="389" size="5" maxlength="128" class="form-text" type="text">
+<div class="description">The TCP/IP port on the above server which accepts LDAP connections. Must be an integer.</div>
+</div>
+<div class="form-item form-type-checkbox form-item-tls">
+ <input id="edit-tls" name="tls" value="1" class="form-checkbox" type="checkbox">  <label class="option" for="edit-tls">Use Start-TLS </label>
+
+<div class="description">Secure the connection between the Drupal and the LDAP servers using TLS.<br><em>Note: To use START-TLS, you must set the LDAP Port to 389.</em></div>
+</div>
+<div class="form-item form-type-checkbox form-item-followrefs">
+ <input id="edit-followrefs" name="followrefs" value="1" class="form-checkbox" type="checkbox">  <label class="option" for="edit-followrefs">Follow LDAP Referrals </label>
+
+<div class="description">Makes the LDAP client follow referrals (in the
+responses from the LDAP server) to other LDAP servers. This requires
+that the Bind Settings you give, is ALSO valid on these other servers.</div>
+</div>
+</div></fieldset>
+<fieldset class="collapsible form-wrapper collapse-processed" id="edit-bind-method"><legend><span class="fieldset-legend"><a class="fieldset-title" href="#"><span class="fieldset-legend-prefix element-invisible">Hide</span> Binding Method</a><span class="summary"></span></span></legend><div class="fieldset-wrapper" style=""><div class="fieldset-description">How the Drupal system is authenticated by the LDAP server.</div><div class="form-item form-type-radios form-item-bind-method">
+  <label for="edit-bind-method--2">Binding Method for Searches (such as finding user object or their group memberships) </label>
+ <div id="edit-bind-method--2" class="form-radios"><div class="form-item form-type-radio form-item-bind-method">
+ <input id="edit-bind-method-1" name="bind_method" value="1" class="form-radio" type="radio">  <label class="option" for="edit-bind-method-1">Service Account Bind: Use credentials in the
+            <strong>Service Account</strong> field to bind to LDAP.  <em>This option is usually a best practice.</em> </label>
+
+</div>
+<div class="form-item form-type-radio form-item-bind-method">
+ <input id="edit-bind-method-2" name="bind_method" value="2" checked="checked" class="form-radio" type="radio">  <label class="option" for="edit-bind-method-2">Bind with Users Credentials: Use user's entered credentials
+            to bind to LDAP.<br> This is only useful for modules that execute during user logon such
+            as LDAP Authentication and LDAP Authorization.  <em>This option is not a best practice in most cases.</em>
+            This option skips the initial anonymous bind and anonymous search to determine the LDAP user DN, but you
+            can only use this option if your user DNs follow a consistent pattern, for example all of them being of
+            the form "cn=[username],[base dn]", or all of them being of the form "uid=[username],ou=accounts,[base dn]".
+            You specify the pattern under "Expression for user DN" in the next configuration block below. </label>
+
+</div>
+<div class="form-item form-type-radio form-item-bind-method">
+ <input id="edit-bind-method-4" name="bind_method" value="4" class="form-radio" type="radio">  <label class="option" for="edit-bind-method-4">Anonymous Bind for search, then Bind with Users Credentials:
+            Searches for user dn then uses user's entered credentials to bind to LDAP.<br> This is only useful for
+            modules that work during user logon such as LDAP Authentication and LDAP Authorization.
+            The user's dn must be discovered by an anonymous search for this option to work. </label>
+
+</div>
+<div class="form-item form-type-radio form-item-bind-method">
+ <input id="edit-bind-method-3" name="bind_method" value="3" class="form-radio" type="radio">  <label class="option" for="edit-bind-method-3">Anonymous Bind: Use no credentials to bind to LDAP server.<br>
+            <em>This option will not work on most LDAPS connections.</em> </label>
+
+</div>
+</div>
+</div>
+<label>Service Account</label> Some LDAP configurations
+          prohibit or restrict the results of anonymous searches. These LDAPs require a DN//password pair
+          for binding. For security reasons, this pair should belong to an
+          LDAP account with stripped down permissions.
+          This is also required for provisioning LDAP accounts and groups!<div class="form-item form-type-textfield form-item-binddn form-disabled">
+  <label for="edit-binddn">DN for non-anonymous search </label>
+ <input id="edit-binddn" name="binddn" value="uid=juusechec,cn=users,cn=accounts,dc=portal,dc=incige,dc=com" size="80" maxlength="511" class="form-text" disabled="disabled" type="text">
+</div>
+<div class="form-item form-type-password form-item-bindpw form-disabled">
+  <label for="edit-bindpw">Password for non-anonymous search </label>
+ <input id="edit-bindpw" name="bindpw" size="20" maxlength="255" class="form-text" disabled="disabled" type="password">
+</div>
+<div class="form-item form-type-checkbox form-item-clear-bindpw">
+ <input id="edit-clear-bindpw" name="clear_bindpw" value="1" class="form-checkbox" type="checkbox">  <label class="option" for="edit-clear-bindpw">Clear existing password from database.  Check this when switching away from Service Account Binding. </label>
+
+</div>
+</div></fieldset>
+<fieldset class="collapsible form-wrapper collapse-processed" id="edit-users"><legend><span class="fieldset-legend"><a class="fieldset-title" href="#"><span class="fieldset-legend-prefix element-invisible">Hide</span> LDAP User to Drupal User Relationship</a><span class="summary"></span></span></legend><div class="fieldset-wrapper" style=""><div class="fieldset-description">How are LDAP user entries found based on Drupal username or email?  And vice-versa?
+       Needed for LDAP Authentication and Authorization functionality.</div><div class="form-item form-type-textarea form-item-basedn">
+  <label for="edit-basedn">Base DNs for LDAP users, groups, and other entries. </label>
+ <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea"><textarea id="edit-basedn" name="basedn" cols="50" rows="6" class="form-textarea">cn=users,cn=accounts,dc=portal,dc=incige,dc=com</textarea><div class="grippie"></div></div>
+<div class="description"><div>What DNs have entries relavant to this configuration?
+            e.g. <code>ou=campus accounts,dc=ad,dc=uiuc,dc=edu</code>
+            Keep in mind that every additional basedn likely doubles the number of queries.  Place the
+            more heavily used one first and consider using one higher base DN rather than 2 or more lower base DNs.
+            Enter one per line in case if you need more than one.</div></div>
+</div>
+<div class="form-item form-type-textfield form-item-user-attr">
+  <label for="edit-user-attr">AuthName attribute </label>
+ <input id="edit-user-attr" name="user_attr" value="uid" size="30" maxlength="255" class="form-text" type="text">
+<div class="description">The attribute that holds the users' login name. (eg. <code>cn</code> for eDir or <code>sAMAccountName</code> for Active Directory).</div>
+</div>
+<div class="form-item form-type-textfield form-item-account-name-attr">
+  <label for="edit-account-name-attr">AccountName attribute </label>
+ <input id="edit-account-name-attr" name="account_name_attr" value="displayname" size="30" maxlength="255" class="form-text" type="text">
+<div class="description">The attribute that holds the unique account name. Defaults to the same as the AuthName attribute.</div>
+</div>
+<div class="form-item form-type-textfield form-item-mail-attr">
+  <label for="edit-mail-attr">Email attribute </label>
+ <input id="edit-mail-attr" name="mail_attr" value="mail" size="30" maxlength="255" class="form-text" type="text">
+<div class="description">The attribute that holds the users' email address. (eg. <code>mail</code>). Leave empty if no such attribute exists</div>
+</div>
+<div class="form-item form-type-textfield form-item-mail-template">
+  <label for="edit-mail-template">Email template </label>
+ <input id="edit-mail-template" name="mail_template" size="30" maxlength="255" class="form-text" type="text">
+<div class="description">If no attribute contains the user's email address, but it can be derived from other attributes,
+            enter an email "template" here.
+            Templates should have the user's attribute name in form such as [cn], [uin], etc.
+            such as <code>[cn]@mycompany.com</code>.
+            See http://drupal.org/node/997082 for additional documentation on ldap tokens.
+            </div>
+</div>
+<div class="form-item form-type-textfield form-item-picture-attr">
+  <label for="edit-picture-attr">Thumbnail attribute </label>
+ <input id="edit-picture-attr" name="picture_attr" size="30" maxlength="255" class="form-text" type="text">
+<div class="description">The attribute that holds the users' thumnail image. (eg. <code>thumbnailPhoto</code>). Leave empty if no such attribute exists</div>
+</div>
+<div class="form-item form-type-textfield form-item-unique-persistent-attr">
+  <label for="edit-unique-persistent-attr">Persistent and Unique User ID Attribute </label>
+ <input id="edit-unique-persistent-attr" name="unique_persistent_attr" value="nsuniqueid" size="30" maxlength="64" class="form-text" type="text">
+<div class="description">In some LDAPs, a user's DN, CN, or mail value may
+            change when a user's name changes or for other reasons.
+            In order to avoid creation of multiple accounts for that user or other ambiguities,
+            enter a unique and persistent ldap attribute for users.  In cases
+            where DN does not change, enter "dn" here.
+            If no such attribute exists, leave this blank.</div>
+</div>
+<div class="form-item form-type-checkbox form-item-unique-persistent-attr-binary">
+ <input id="edit-unique-persistent-attr-binary" name="unique_persistent_attr_binary" value="1" class="form-checkbox" type="checkbox">  <label class="option" for="edit-unique-persistent-attr-binary">Does PUID hold a binary value? </label>
+
+</div>
+<div class="form-item form-type-textfield form-item-user-dn-expression">
+  <label for="edit-user-dn-expression">Expression for user DN. Required when "Bind with Users Credentials" method selected. </label>
+ <input id="edit-user-dn-expression" name="user_dn_expression" value="uid=%username,%basedn" size="80" maxlength="255" class="form-text" type="text">
+<div class="description">%username and %basedn are valid tokens in the expression.
+            Typically it will be:<br> <code>cn=%username,%basedn</code>
+             which might evaluate to <code>cn=jdoe,ou=campus accounts,dc=ad,dc=mycampus,dc=edu</code>
+             Base DNs are entered above.</div>
+</div>
+<div class="form-item form-type-textarea form-item-ldap-to-drupal-user form-disabled">
+  <label for="edit-ldap-to-drupal-user">PHP to transform Drupal login username to LDAP UserName attribute. </label>
+ <div class="form-textarea-wrapper resizable textarea-processed resizable-textarea"><textarea disabled="disabled" id="edit-ldap-to-drupal-user" name="ldap_to_drupal_user" cols="25" rows="5" class="form-textarea"></textarea><div class="grippie"></div></div>
+<div class="description">This will appear as disabled unless the "PHP
+filter" core module is enabled. Enter PHP to transform Drupal username
+to the value of the UserName attribute.
+            The code should print the UserName attribute.
+            PHP filter module must be enabled for this to work.
+            The variable $name is available and is the user's login
+username.
+            Careful, bad PHP code here will break your site. If left
+empty, no name transformation will be done.
+            <br>Example:<br>Given the user will logon with jdoe@xyz.com and you want the ldap UserName attribute to be
+            jdoe.<br><code>$parts = explode('@', $name); if (count($parts) == 2) {print $parts[0]};</code></div>
+</div>
+<div class="form-item form-type-textfield form-item-testing-drupal-username">
+  <label for="edit-testing-drupal-username">Testing Drupal Username </label>
+ <input id="edit-testing-drupal-username" name="testing_drupal_username" size="30" maxlength="255" class="form-text" type="text">
+<div class="description">This is optional and used for testing this
+server's configuration against an actual username.  The user need not
+exist in Drupal and testing will not affect the user's LDAP or Drupal
+Account.</div>
+</div>
+<div class="form-item form-type-textfield form-item-testing-drupal-user-dn">
+  <label for="edit-testing-drupal-user-dn">DN of testing username, e.g. cn=hpotter,ou=people,dc=hogwarts,dc=edu </label>
+ <input id="edit-testing-drupal-user-dn" name="testing_drupal_user_dn" size="120" maxlength="255" class="form-text" type="text">
+<div class="description">This is optional and used for testing this
+server's configuration against an actual username.  The user need not
+exist in Drupal and testing will not affect the user's LDAP or Drupal
+Account.</div>
+</div>
+</div></fieldset>
+<fieldset class="collapsible form-wrapper collapse-processed" id="edit-groups"><legend><span class="fieldset-legend"><a class="fieldset-title" href="#"><span class="fieldset-legend-prefix element-invisible">Hide</span> LDAP Group Configuration</a><span class="summary"></span></span></legend><div class="fieldset-wrapper" style=""><div class="fieldset-description">How are groups defined on your LDAP server?  This varies slightly from one LDAP implementation to another
+      such as Active Directory, Novell, OpenLDAP, etc. Check everything that is true and enter all the values you know.</div><div class="form-item form-type-checkbox form-item-grp-unused">
+ <input id="edit-grp-unused" name="grp_unused" value="1" checked="checked" class="form-checkbox" type="checkbox">  <label class="option" for="edit-grp-unused">Groups are not relevant to this Drupal site.  This is generally true if LDAP Groups, LDAP Authorization, etc are not it use. </label>
+
+</div>
+<div class="form-item form-type-textfield form-item-grp-object-cat" style="display: none;">
+  <label for="edit-grp-object-cat">Name of Group Object Class </label>
+ <input id="edit-grp-object-cat" name="grp_object_cat" size="30" maxlength="64" class="form-text" type="text">
+<div class="description">e.g. groupOfNames, groupOfUniqueNames, group.</div>
+</div>
+<div class="form-item form-type-checkbox form-item-grp-nested" style="display: none;">
+ <input id="edit-grp-nested" name="grp_nested" value="1" class="form-checkbox" type="checkbox">  <label class="option" for="edit-grp-nested">Nested groups are used in my LDAP </label>
+
+<div class="description">If a user is a member of group A and group A is a member of group B,
+             user should be considered to be in group A and B.  If your LDAP has nested groups, but you
+             want to ignore nesting, leave this unchecked.</div>
+</div>
+<div class="form-item form-type-checkbox form-item-grp-user-memb-attr-exists" style="display: none;">
+ <input id="edit-grp-user-memb-attr-exists" name="grp_user_memb_attr_exists" value="1" class="form-checkbox" type="checkbox">  <label class="option" for="edit-grp-user-memb-attr-exists">A user LDAP attribute such as <code>memberOf</code> exists that contains a list of their groups.
+            Active Directory and openLdap with memberOf overlay fit this model. </label>
+
+</div>
+<div class="form-item form-type-textfield form-item-grp-user-memb-attr form-disabled" style="display: none;">
+  <label for="edit-grp-user-memb-attr">Attribute in User Entry Containing Groups </label>
+ <input id="edit-grp-user-memb-attr" name="grp_user_memb_attr" size="30" maxlength="255" class="form-text" disabled="disabled" type="text">
+<div class="description">e.g. memberOf</div>
+</div>
+<div class="form-item form-type-textfield form-item-grp-memb-attr" style="display: none;">
+  <label for="edit-grp-memb-attr">LDAP Group Entry Attribute Holding User's DN, CN, etc. </label>
+ <input id="edit-grp-memb-attr" name="grp_memb_attr" size="30" maxlength="255" class="form-text" type="text">
+<div class="description">e.g uniquemember, memberUid</div>
+</div>
+<div class="form-item form-type-textfield form-item-grp-memb-attr-match-user-attr" style="display: none;">
+  <label for="edit-grp-memb-attr-match-user-attr">User attribute held in "LDAP Group Entry Attribute Holding..." </label>
+ <input id="edit-grp-memb-attr-match-user-attr" name="grp_memb_attr_match_user_attr" size="30" maxlength="255" class="form-text" type="text">
+<div class="description">This is almost always "dn" (which technically isn't an attribute).  Sometimes its "cn".</div>
+</div>
+<div class="form-item form-type-checkbox form-item-grp-derive-from-dn" style="display: none;">
+ <input id="edit-grp-derive-from-dn" name="grp_derive_from_dn" value="1" class="form-checkbox" type="checkbox">  <label class="option" for="edit-grp-derive-from-dn">Groups are derived from user's LDAP entry DN.<em>This
+            group definition has very limited functionality and most modules will
+            not take this into account.  LDAP Authorization will.</em> </label>
+
+</div>
+<div class="form-item form-type-textfield form-item-grp-derive-from-dn-attr form-disabled" style="display: none;">
+  <label for="edit-grp-derive-from-dn-attr">Attribute of the User's LDAP Entry DN which contains the group </label>
+ <input id="edit-grp-derive-from-dn-attr" name="grp_derive_from_dn_attr" size="30" maxlength="255" class="form-text" disabled="disabled" type="text">
+<div class="description">e.g. ou</div>
+</div>
+<div class="form-item form-type-textfield form-item-grp-test-grp-dn" style="display: none;">
+  <label for="edit-grp-test-grp-dn">Testing LDAP Group DN </label>
+ <input id="edit-grp-test-grp-dn" name="grp_test_grp_dn" size="120" maxlength="255" class="form-text" type="text">
+<div class="description">This is optional and can be useful for debugging and validating forms.</div>
+</div>
+<div class="form-item form-type-textfield form-item-grp-test-grp-dn-writeable" style="display: none;">
+  <label for="edit-grp-test-grp-dn-writeable">Testing LDAP Group DN that
+ is writable.  WARNING the test script for the server will create,
+delete, and add members to this group! </label>
+ <input id="edit-grp-test-grp-dn-writeable" name="grp_test_grp_dn_writeable" size="120" maxlength="255" class="form-text" type="text">
+<div class="description">This is optional and can be useful for debugging and validating forms.</div>
+</div>
+</div></fieldset>
+<fieldset class="collapsible form-wrapper collapse-processed" id="edit-pagination"><legend><span class="fieldset-legend"><a class="fieldset-title" href="#"><span class="fieldset-legend-prefix element-invisible">Hide</span> LDAP Pagination</a><span class="summary"></span></span></legend><div class="fieldset-wrapper"><div class="fieldset-description">In PHP 5.4, pagination is supported in ldap queries.
+      A patch to earlier versions of PHP also supports this. <strong>This PHP installation appears to support pagination!</strong> <p>The advantage to pagination support is that if an ldap server is setup to return only
+      1000 entries at a time,
+      you can use page through 1000 records at a time;
+      without pagination you would never see more than the first 1000 entries.
+      Pagination is most useful when large queries for batch creating or
+      synching accounts are used.  If you are not using this server for such
+      tasks, its recommended to leave pagination disabled.</p></div><div class="form-item form-type-checkbox form-item-search-pagination">
+ <input id="edit-search-pagination" name="search_pagination" value="1" class="form-checkbox" type="checkbox">  <label class="option" for="edit-search-pagination">Use LDAP Pagination. </label>
+
+</div>
+<div class="form-item form-type-textfield form-item-search-page-size" style="display: none;">
+  <label for="edit-search-page-size">Pagination size limit. </label>
+ <input id="edit-search-page-size" name="search_page_size" value="1000" size="10" maxlength="128" class="form-text" type="text">
+<div class="description">This should be equal to or smaller than the max
+            number of entries returned at a time by your ldap server.
+            1000 is a good guess when unsure. Other modules such as LDAP Query
+            or LDAP Feeds will be allowed to set a smaller page size, but not
+            a larger one.</div>
+</div>
+</div></fieldset>
+<input name="form_build_id" value="form-3U_Q030J12GwcVCIdoUw_tGATzHTMl3dYNkgps4XYp0" type="hidden">
+<input name="form_token" value="GwLiEQatMqoZm9QG9bFatuMJmEtsys_yAXO7rhUIzwk" type="hidden">
+<input name="form_id" value="ldap_servers_admin_form" type="hidden">
+<input id="edit-submit" name="op" value="Update" class="form-submit" type="submit"></div></form>  </div>
